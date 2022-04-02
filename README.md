@@ -1,2 +1,2 @@
-# indonesian_trug_simulator
+# indonesian-trug-simulator
 still an empty repo, just like me :((
