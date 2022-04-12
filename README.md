@@ -1,2 +1,2 @@
-# indonesian-trug-simulator
-still an empty repo, just like me :((
+# indonesian-trug-simulator   
+feel the immersive truck simulation taking place in Indonesia (precisely in my basement)
