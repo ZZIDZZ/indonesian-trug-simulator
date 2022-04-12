@@ -8,7 +8,6 @@
 #include <GL/glut.h>
 #include <stdbool.h>
 #include <time.h>
-
 #define PI 3.14159265358979323846
 
 int yaw = 0,  pitch = 90;
@@ -21,7 +20,6 @@ int bitmapHeight = 12;
 float mx=0, my=0;
 float bruh0 = 0.1, bruh1 = 0, bruh2 = 0; // jangan pedulikan variabel ini
 
-
 const GLfloat light_ambient[] = { 0.5f, 0.5f, 0.5f, 0.0f }; 
 const GLfloat light_diffuse[] = { 1.0f, 1.0f, 1.0f, 1.0f }; 
 const GLfloat light_specular[] = { 1.0f, 1.0f, 1.0f, 1.0f }; 
@@ -31,8 +29,7 @@ const GLfloat mat_diffuse[] = { 0.8f, 0.8f, 0.8f, 1.0f };
 const GLfloat mat_specular[] = { 1.0f, 1.0f, 1.0f, 1.0f }; 
 const GLfloat high_shininess[] = { 100.0f }; 
 
-
-void drawMeAWheel(GLfloat radius, GLfloat height){
+void drawMeAWheel(float radius, float height){
     GLfloat x              = 0.0;
     GLfloat y              = 0.0;
     GLfloat angle          = 0.0;
@@ -140,7 +137,6 @@ void drawMeABox(float w=1, float h=1, float l=1){
 	 	glEnd(); 
  	glPopMatrix();
 }
-
 
 class Player{
     private:
@@ -263,8 +259,8 @@ class Player{
         }
 }
 };
-Player player;
 
+Player player;
 
 void timer(int millisec){
     glutTimerFunc(millisec, timer, millisec);
@@ -373,17 +369,6 @@ void releaseKey(unsigned char key, int xn, int yn) {
             movez= 0;
     }
 }
-void mouseControl(int x1, int y1){
-    int dx = x1 - mx;
-    int dy = y1 - my;
-    mx = w/2;
-    my = h/2;
-    glutWarpPointer(w / 2, h / 2);
-    yaw += (int)1*dx*0.5;
-    pitch += (int)1*dy*0.5;
-    if(pitch>=179) pitch =179;
-    else if(pitch<1) pitch=1;
-}
 
 void reshape(int w1, int h1) {
     // Fungsi reshape
@@ -414,7 +399,6 @@ void display(){
     glutSwapBuffers();
 }
 
-
 int main(){
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowPosition(100, 100);
@@ -424,7 +408,6 @@ int main(){
     init();
     glutKeyboardFunc(pressKey);
     glutKeyboardUpFunc(releaseKey);
-    glutPassiveMotionFunc(mouseControl);
     glutSetCursor(GLUT_CURSOR_NONE);
     glutTimerFunc(50, timer, 50);
     glutDisplayFunc(display);
