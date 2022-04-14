@@ -274,6 +274,8 @@ void renderTruckDeco() {
     }
 }
 
+
+
 class Player{
     public:
         float trugPosx = 0, trugPosY = 0;
@@ -365,6 +367,12 @@ class Player{
             glPushMatrix();
                 glTranslatef((GLfloat)trugPosx, trugPosY,0.0);
                 renderTruck();
+                renderTruckDeco();
+                glTranslatef(0, 0, 13.5);
+                for (int i = 0; i < 5; i++) {
+                    glTranslatef(0, 0, -13.5);
+                    renderAddContainer();
+                }
             glPopMatrix();
         }
         void jump(){
@@ -385,7 +393,7 @@ class Obstacle{
             G = 0.1 * (rand() % 10);
             B = 0.1 * (rand() % 10);
         }
-        float obsX, obsY = 0, obsZ = 30;
+        float obsX, obsY = 0, obsZ = 50;
         float R,G,B;
         void update(){
             obsZ -= WORLD_SPEED;
@@ -398,5 +406,24 @@ class Obstacle{
                 renderCube();
             glPopMatrix();
         }
+};
         
+class Gedung{
+    public:
+        Gedung(){
+            obsX = -10 + (rand() % 2) * 20;
+            WORLD_SPEED += 0.01;
+            R = 0.1 * (rand() % 10);
+            G = 0.1 * (rand() % 10);
+            B = 0.1 * (rand() % 10);
+        }
+        float obsX, obsY = 0, obsZ = 30;
+        float R,G,B;
+        void update(){
+            obsZ -= WORLD_SPEED;
+            printf("%f\n", obsZ);
+        }
+        void draw(){
+            // TODO: gambar gedung disini
+        }
 };

@@ -8,5 +8,5 @@ void drawMeABox(float w, float h, float l);
 class Player;
 
 class Obstacle;
-
+class Gedung;
 #endif

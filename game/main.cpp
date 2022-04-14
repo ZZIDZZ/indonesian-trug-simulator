@@ -29,11 +29,13 @@ const GLfloat light_position[] = { 0.0f, 20.0f, 10.0f, 1.0f };
 const GLfloat mat_ambient[] = { 0.7f, 0.7f, 0.7f, 1.0f }; 
 const GLfloat mat_diffuse[] = { 0.8f, 0.8f, 0.8f, 1.0f }; 
 const GLfloat mat_specular[] = { 1.0f, 1.0f, 1.0f, 1.0f }; 
-const GLfloat high_shininess[] = { 100.0f }; 
+const GLfloat high_shininess[] = { 100.0f };
 
+// inisialisasi player sama obstacle
 Player player;
 std::vector<Obstacle> obstacles(1, Obstacle());
 
+// currently useless, TODO: create fps limiter
 void timer(int millisec){
     glutTimerFunc(millisec, timer, millisec);
     glutPostRedisplay();
@@ -59,7 +61,7 @@ void init(){
  	glMaterialfv(GL_FRONT, GL_SHININESS, high_shininess); 
     timer(60);
 }
-
+// todo: world generation
 void grid() {
     // Fungsi untuk membuat grid di "lantai"
     double i;
@@ -166,7 +168,6 @@ void handleObstacle(){
             it = obstacles.erase(it);
             obstacles.insert(it, Obstacle());
         }
-
     }
 }
 
