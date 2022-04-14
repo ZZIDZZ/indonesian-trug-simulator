@@ -413,12 +413,8 @@ class Gedung{
         Gedung(){
             obsX = -10 + (rand() % 2) * 20;
             WORLD_SPEED += 0.01;
-            R = 0.1 * (rand() % 10);
-            G = 0.1 * (rand() % 10);
-            B = 0.1 * (rand() % 10);
         }
         float obsX, obsY = 0, obsZ = 30;
-        float R,G,B;
         void update(){
             obsZ -= WORLD_SPEED;
             printf("%f\n", obsZ);
