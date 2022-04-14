@@ -8,6 +8,7 @@
 #include <GL/glut.h>
 #include <stdbool.h>
 #include <time.h>
+#include <vector>
 #include "game_oop.h"
 #include "game_oop.cpp"
 
@@ -31,6 +32,7 @@ const GLfloat mat_specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
 const GLfloat high_shininess[] = { 100.0f }; 
 
 Player player;
+std::vector<Obstacle> obstacles(1, Obstacle());
 
 void timer(int millisec){
     glutTimerFunc(millisec, timer, millisec);
@@ -79,6 +81,7 @@ void grid() {
     glEnd();
 }
 
+// TODO: benerin view camera
 void orientCamera() {
     // float buff_pitch = pitch*PI/180.;
     // float buff_yaw = yaw*PI/180.;
@@ -111,11 +114,11 @@ void pressKey(unsigned char key, int xn, int yn) {
         // a and d to move right left trug
         case 'd':
             if(player.trugPosx>-5) player.trugPosx-=5;
-            printf("%d\n", player.trugPosx);
+            printf("%f\n", player.trugPosx);
             break;
         case 'a':
             if(player.trugPosx < 5) player.trugPosx += 5;
-            printf("%d\n", player.trugPosx);
+            printf("%f\n", player.trugPosx);
             break;
         // space to jump
         case 32:
@@ -137,6 +140,33 @@ void releaseKey(unsigned char key, int xn, int yn) {
         case 'a':
         case 'd':
             movez= 0;
+    }
+}
+
+void handleObstacle(){
+    // std::vector<Obstacle>::iterator it = obstacles.begin();
+    // for(int i = 0; i < obstacles.size();i++){
+    //     if(obstacles[i].obsX > -10){
+    //         obstacles[i].draw();
+    //         obstacles[i].update();
+            
+    //     }
+    //     else{
+            
+    //     }
+
+    // }
+    for(auto it = obstacles.begin(); it != obstacles.end();){
+        if(it->obsZ > -10){
+            it->draw();
+            it->update();
+            ++it;
+        }
+        else{
+            it = obstacles.erase(it);
+            obstacles.insert(it, Obstacle());
+        }
+
     }
 }
 
@@ -166,6 +196,7 @@ void display(){
     grid();
     // draw me a truck gandeng
     player.handleTrug();
+    handleObstacle();
     glutSwapBuffers();
 }
 

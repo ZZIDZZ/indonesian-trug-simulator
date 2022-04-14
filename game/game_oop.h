@@ -1,10 +1,14 @@
-#ifndef GAME_OOP_H
-#define GAME_OOP_H
+#include <stdbool.h>
+#ifndef GAME_OOP_GHANI_H
+#define GAME_OOP_GHANI_H
 #define PI 3.14159265358979323846
 
-void drawMeAWheel(float radius, float height);
-void drawMeABox(float w, float h, float l);
+void renderAddContainer();
+void renderCylinder(float radius, float height);
+void renderCube(float w, float l, float h);
+void renderTruckDeco();
 class Player;
 
+class Obstacle;
 
 #endif
